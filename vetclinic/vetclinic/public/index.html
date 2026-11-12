@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Clínica Veterinária</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<!-- LOGIN -->
+<main id="tela-login" class="card login">
+  <h1>🐾 Clínica Veterinária</h1>
+  <form id="form-login">
+    <label>E-mail <input type="email" id="login-email" required></label>
+    <label>Senha <input type="password" id="login-senha" required></label>
+    <button>Entrar</button>
+    <p id="login-erro" class="erro"></p>
+  </form>
+</main>
+
+<!-- APP -->
+<div id="tela-app" hidden>
+  <header>
+    <strong>🐾 Clínica Veterinária</strong>
+    <span>Logado como: <b id="usuario"></b></span>
+    <button id="btn-sair" class="sec">Sair</button>
+  </header>
+  <nav>
+    <a href="#home">Início</a><a href="#tutores">Tutores</a>
+    <a href="#pets">Pets</a><a href="#agendamentos">Agendamentos</a>
+  </nav>
+
+  <section id="home" class="card">
+    <h2>Bem-vindo(a), <span id="usuario2"></span>!</h2>
+    <p>Escolha uma opção:</p>
+    <div class="atalhos">
+      <a class="btn" href="#tutores">Tutores</a>
+      <a class="btn" href="#pets">Pets</a>
+      <a class="btn" href="#agendamentos">Agendamentos</a>
+    </div>
+  </section>
+
+  <section id="tutores" class="card" hidden>
+    <h2>Tutores</h2>
+    <input id="busca-tutor" placeholder="Digite um nome para buscar...">
+    <form id="form-tutor" class="grid">
+      <input type="hidden" id="t-id">
+      <input id="t-nome" placeholder="Nome" required>
+      <input id="t-cpf" placeholder="CPF (somente números)" required maxlength="14">
+      <input id="t-tel" placeholder="Telefone">
+      <input id="t-email" type="email" placeholder="E-mail">
+      <button>Salvar</button><button type="button" id="t-cancel" class="sec">Limpar</button>
+    </form>
+    <p id="t-msg" class="erro"></p>
+    <table><thead><tr><th>Nome</th><th>CPF</th><th>Telefone</th><th>E-mail</th><th></th></tr></thead>
+    <tbody id="lista-tutores"></tbody></table>
+  </section>
+
+  <section id="pets" class="card" hidden>
+    <h2>Pets</h2>
+    <form id="form-pet" class="grid">
+      <input type="hidden" id="p-id">
+      <input id="p-nome" placeholder="Nome do pet" required>
+      <input id="p-especie" placeholder="Espécie" required>
+      <input id="p-raca" placeholder="Raça">
+      <select id="p-tutor" required></select>
+      <button>Salvar</button><button type="button" id="p-cancel" class="sec">Limpar</button>
+    </form>
+    <p id="p-msg" class="erro"></p>
+    <table><thead><tr><th>Pet</th><th>Espécie</th><th>Raça</th><th>Tutor</th><th></th></tr></thead>
+    <tbody id="lista-pets"></tbody></table>
+  </section>
+
+  <section id="agendamentos" class="card" hidden>
+    <h2>Agendamentos</h2>
+    <form id="form-ag" class="grid">
+      <select id="a-pet" required></select>
+      <input id="a-data" type="datetime-local" required>
+      <input id="a-motivo" placeholder="Motivo">
+      <button>Agendar</button>
+    </form>
+    <p id="a-msg" class="erro"></p>
+    <table><thead><tr><th>Data</th><th>Pet</th><th>Tutor</th><th>Telefone</th><th>Motivo</th><th></th></tr></thead>
+    <tbody id="lista-ag"></tbody></table>
+  </section>
+</div>
+<script src="app.js"></script>
+</body>
+</html>
